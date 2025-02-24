@@ -34,6 +34,10 @@ Gjør beregningene ETTER at du legger til to år på alderen, og husk, hopp over
 
 ******************************************************************************/
 
+console.log("--");
+console.log("OPPGAVE 1");
+console.log("--");
+
 const cities = ["New York", "London", "Paris", "Berlin", "Copenhagen", "Rome"];
 
 const people = [
@@ -96,6 +100,7 @@ for (let i in people) {
 	people[i].hobbies.unshift("coding");	
 	combinedAge += people[i].age;
 }
+
 console.log(people);
 
 let averageAge = combinedAge/people.length;
@@ -120,9 +125,25 @@ diceRoller(5, 20) skal returnere et array med 5 tilfeldige tall fra 1-20.
 
 ******************************************************************************/
 
-function diceRoller(count, sides) {
-	if (!sides) sides = 6;
-	return [...new Array(count)].map((i) => Math.floor(Math.random()*sides) + 1);
+console.log("--");
+console.log("OPPGAVE 2");
+console.log("--");
+
+function diceRoller(count) {
+	let sides;
+	if (arguments.length < 2) {
+		sides = 6
+	} else {
+		sides = arguments[1];
+	}
+	if (!count) count = 1;
+	
+	let arr = new Array(count);
+	for (let i = 0; i < count; i++) {
+		arr[i] = Math.floor(Math.random()*sides) + 1;
+	}
+
+	return arr;
 }
 
 console.log(diceRoller(4));
@@ -154,13 +175,23 @@ skal returnere:
 
 ******************************************************************************/
 
+console.log("--");
+console.log("OPPGAVE 3");
+console.log("--");
+
 function trimAndToLowerCase(strArr) {
 	let arr = [];
-	for (let str of strArr) arr.push(str.trim().toLowerCase());
+	for (let str of strArr) {
+		arr.push(str.trim().toLowerCase());
+	}
 	return arr.join(" ");
 }
 
-console.log(trimAndToLowerCase([" thIS", "teXt  ", " nEeds ", "to", "BE", "cleANED   ", " Up"]));
+let stringArray = [" thIS", "teXt  ", " nEeds ", "to", "BE", "cleANED   ", " Up"];
+console.log(stringArray);
+
+let cleanedString = trimAndToLowerCase(stringArray);
+console.log(cleanedString);
 
 /******************************************************************************
 4.
@@ -187,14 +218,20 @@ skal returnere "whao is ohe ptino tf ohis?"
 
 ******************************************************************************/
 
+console.log("--");
+console.log("OPPGAVE 4");
+console.log("--");
+
 function doubleSwap(string, charA, charB) {
-	return string.split("")
-			.map((char) => {
-				if (char === charA) return charB;
-				else if (char === charB) return charA;
-				else return char;
-			})
-			.join("");
+	let arr = string.split("");
+	for (let i in arr) {
+		if (arr[i] === charA) {
+			arr[i] = charB;
+		} else if (arr[i] === charB) {
+			arr[i] = charA;
+		}
+	}
+	return arr.join("");
 }
 
 console.log(doubleSwap("this is a string", "i", "s"));
@@ -231,6 +268,10 @@ PS: Sørg for at funksjonen er case-insensitive; både "Hello" og "hello" skal o
 Jeg har lagt til noen testvariabler for å sjekke funksjonen din.
 
 ******************************************************************************/
+
+console.log("--");
+console.log("OPPGAVE 5");
+console.log("--");
 
 const greetings = new Map([
   [ "Hello, how are you today?", "engelsk" ],
